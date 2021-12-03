@@ -1,7 +1,8 @@
 import {FaPoll} from "react-icons/all";
 import UserDetails from "./UserDetails";
+import {connect} from "react-redux";
 
-export default function Navigation() {
+function Navigation({isUserLoggedIn}) {
     return (<nav className="navbar shadow navbar-expand navbar-dark bg-dark flex-grow-0">
         <div className="container">
             <a href="/#" className="navbar-brand">
@@ -19,7 +20,15 @@ export default function Navigation() {
                     <a href={'/#'} className={'nav-link'}>leaderboard</a>
                 </li>
             </ul>
-            <UserDetails/>
+            {isUserLoggedIn && <UserDetails/>}
         </div>
     </nav>)
 }
+
+function mapStateToProps(state) {
+    return {
+        isUserLoggedIn: !!state.authUser
+    }
+}
+
+export default connect(mapStateToProps)(Navigation);

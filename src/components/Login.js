@@ -1,8 +1,9 @@
 import {FaPoll} from "react-icons/all";
 import {connect} from "react-redux";
 import {loginAction} from "../store/actions/authUser";
+import {Redirect} from "react-router-dom";
 
-function Login({usersIds, users, dispatch}) {
+function Login({usersIds, users, authUser, dispatch}) {
     let select = null;
 
     const doLogin = (userId) => {
@@ -11,6 +12,10 @@ function Login({usersIds, users, dispatch}) {
             return;
         // dispatch login action for the selected user
         dispatch(loginAction(userId));
+    }
+
+    if (authUser) {
+        return <Redirect to={'/'}/>
     }
 
     return <div className='d-flex align-items-center justify-content-center'>
@@ -34,10 +39,11 @@ function Login({usersIds, users, dispatch}) {
     </div>
 }
 
-function mapStateToProps({users}) {
+function mapStateToProps({users, authUser}) {
     return {
         usersIds: Object.keys(users),
-        users
+        users,
+        authUser
     }
 }
 

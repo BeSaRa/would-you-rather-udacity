@@ -1,8 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
+body {
+    overflow-x: hidden;
+}
+
 #root {
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -17,4 +20,7 @@
     border: 1px solid #EEE;
     border-left: none;
     margin: 0 5px;
+}
+.avatar-image {
+    max-width: 200px;
 }

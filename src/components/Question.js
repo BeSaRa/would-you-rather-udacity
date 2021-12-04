@@ -24,9 +24,7 @@ function Question({question, author}) {
 
 function mapStateToProps(state, {id}) {
     const question = state.questions[id];
-    console.log({question});
     const author = state.users[question.author];
-    console.log('author', author);
     return {
         question,
         author

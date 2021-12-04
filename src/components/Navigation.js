@@ -1,33 +1,34 @@
 import {FaPoll} from "react-icons/all";
 import UserDetails from "./UserDetails";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
-function Navigation({isUserLoggedIn}) {
+function Navigation({authUser}) {
     return (<nav className="navbar shadow navbar-expand navbar-dark bg-dark flex-grow-0">
         <div className="container">
-            <a href="/#" className="navbar-brand">
+            <Link to="/" className="navbar-brand">
                 <FaPoll className={'logo'}/>
                 <span> Polling! </span>
-            </a>
+            </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className={'nav-item'}>
-                    <a href={'/#'} className={'active nav-link'}>home</a>
+                    <Link to={'/'} className={'active nav-link'}>home</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <a href={'/#'} className={'nav-link'}>New Question</a>
+                    <Link to={'/new'} className={'nav-link'}>New Question</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <a href={'/#'} className={'nav-link'}>leaderboard</a>
+                    <Link to={'/leaderboard'} className={'nav-link'}>leaderboard</Link>
                 </li>
             </ul>
-            {isUserLoggedIn && <UserDetails/>}
+            {authUser && <UserDetails/>}
         </div>
     </nav>)
 }
 
 function mapStateToProps(state) {
     return {
-        isUserLoggedIn: !!state.authUser
+        authUser: state.authUser
     }
 }
 

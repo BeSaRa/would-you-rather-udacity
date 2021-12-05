@@ -1,15 +1,18 @@
 import {useState} from "react";
 import {connect} from "react-redux";
 import {handleAddQuestion} from "../store/actions/questions";
+import {useHistory} from "react-router-dom";
 
 function NewQuestion({authUser, dispatch}) {
     const [optionOneText, setOptionOne] = useState("");
     const [optionTwoText, setOptionTwo] = useState("");
-    // optionOneText, optionTwoText, author
-
+    const history = useHistory();
     const submitQuestion = () => {
         dispatch(handleAddQuestion({
             optionOneText, optionTwoText, author: authUser
+        }, () => {
+            // redirect back to the home page
+            history.push('/');
         }))
     }
 

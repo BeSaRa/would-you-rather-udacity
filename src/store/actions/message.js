@@ -19,5 +19,5 @@ export function successMessage(message, timer = 3000) {
 }
 
 export function errorMessage(message, timer = 3000) {
-    return displayMessage({text: message, class: 'danger-success', timer})
+    return displayMessage({text: message, class: 'alert-danger', timer})
 }

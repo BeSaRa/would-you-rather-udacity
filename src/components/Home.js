@@ -51,8 +51,8 @@ function mapStateToProps(state) {
     // filter the answered
     const unAnswered = Object.keys(questions).filter((id) => !answered.includes(id))
     return {
-        answered,
-        unAnswered
+        answered: answered.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
+        unAnswered: unAnswered.sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }
 }
 

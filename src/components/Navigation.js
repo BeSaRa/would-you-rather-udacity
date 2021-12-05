@@ -15,7 +15,7 @@ function Navigation({authUser}) {
                     <Link to={'/'} className={'active nav-link'}>home</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <Link to={'/new'} className={'nav-link'}>New Question</Link>
+                    <Link to={'/add'} className={'nav-link'}>New Question</Link>
                 </li>
                 <li className={'nav-item'}>
                     <Link to={'/leaderboard'} className={'nav-link'}>leaderboard</Link>

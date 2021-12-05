@@ -2,18 +2,28 @@ import {useState} from "react";
 import {connect} from "react-redux";
 import {handleAddQuestion} from "../store/actions/questions";
 import {useHistory} from "react-router-dom";
+import {errorMessage} from "../store/actions/message";
 
 function NewQuestion({authUser, dispatch}) {
     const [optionOneText, setOptionOne] = useState("");
     const [optionTwoText, setOptionTwo] = useState("");
     const history = useHistory();
     const submitQuestion = () => {
+        if (!validateInputs(optionOneText, optionTwoText)) {
+            dispatch(errorMessage("Please Make sure that all inputs filled correctly"))
+            return
+        }
+
         dispatch(handleAddQuestion({
             optionOneText, optionTwoText, author: authUser
         }, () => {
             // redirect back to the home page
             history.push('/');
         }))
+    }
+
+    const validateInputs = (optionOneText, optionTwoText) => {
+        return !!optionTwoText && !!optionOneText && optionOneText.trim().length && optionTwoText.trim().length;
     }
 
     return <div className="d-flex align-items-center justify-content-center">

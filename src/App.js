@@ -10,6 +10,7 @@ import {Route, Switch} from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewQuestion from "./components/NewQuestion";
+import Notifier from "./components/Notifier";
 
 function App({dispatch}) {
     useEffect(() => {
@@ -18,16 +19,17 @@ function App({dispatch}) {
         dispatch(loginAction('sarahedo'));
     });
     return (<div id="app" className="d-flex flex-column flex-grow-1">
-            <Navigation/>
-            <div className="container shadow-sm bg-white flex-grow-1 pt-5">
-                <Switch>
-                    <ProtectedRoute exact={true} path={'/'}><Home/></ProtectedRoute>
-                    <ProtectedRoute path={'/new'}><NewQuestion/></ProtectedRoute>
-                    <Route path={'/login'} component={Login}/>
-                    <Route component={PageNotFound}/>
-                </Switch>
-            </div>
-        </div>);
+        <Navigation/>
+        <div className="container shadow-sm bg-white flex-grow-1 pt-5">
+            <Notifier/>
+            <Switch>
+                <ProtectedRoute exact={true} path={'/'}><Home/></ProtectedRoute>
+                <ProtectedRoute path={'/add'}><NewQuestion/></ProtectedRoute>
+                <Route path={'/login'} component={Login}/>
+                <Route component={PageNotFound}/>
+            </Switch>
+        </div>
+    </div>);
 }
 
 export default connect()(App);

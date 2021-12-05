@@ -2,6 +2,7 @@ import {FaPoll} from "react-icons/all";
 import {connect} from "react-redux";
 import {loginAction} from "../store/actions/authUser";
 import {Redirect} from "react-router-dom";
+import {successMessage} from "../store/actions/message";
 
 function Login({usersIds, users, authUser, dispatch}) {
     let select = null;
@@ -12,6 +13,8 @@ function Login({usersIds, users, authUser, dispatch}) {
             return;
         // dispatch login action for the selected user
         dispatch(loginAction(userId));
+        // display welcome message for the logged-in user
+        dispatch(successMessage(`Welcome back!, ${users[userId].name}`))
     }
 
     if (authUser) {

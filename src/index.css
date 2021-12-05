@@ -21,6 +21,31 @@ body {
     border-left: none;
     margin: 0 5px;
 }
+
 .avatar-image {
     max-width: 200px;
+}
+
+.top-left-triangle {
+    width: 0;
+    height: 0;
+    border-top: 55px solid rgba(0, 0, 0, 0.09);
+    border-right: 55px solid transparent;
+}
+
+.cup-position {
+    left: 5px;
+    top: -50px;
+}
+
+.cup-xgold {
+    color: darkgoldenrod;
+}
+
+.cup-xsilver {
+    color: silver;
+}
+
+.cup-xbronze {
+    color: #CD7F32;
 }

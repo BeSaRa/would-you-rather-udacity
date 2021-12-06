@@ -8,11 +8,13 @@ function NewQuestion({authUser, dispatch}) {
     const [optionOneText, setOptionOne] = useState("");
     const [optionTwoText, setOptionTwo] = useState("");
     const history = useHistory();
+    const [disableSubmit, setDisableSubmit] = useState(false);
     const submitQuestion = () => {
         if (!validateInputs(optionOneText, optionTwoText)) {
             dispatch(errorMessage("Please Make sure that all inputs filled correctly"))
             return
         }
+        setDisableSubmit(true);
 
         dispatch(handleAddQuestion({
             optionOneText, optionTwoText, author: authUser
@@ -43,7 +45,8 @@ function NewQuestion({authUser, dispatch}) {
                 <input value={optionTwoText} onChange={(e) => setOptionTwo(e.target.value)}
                        placeholder="Enter Option Two Text here" className="form-control mb-4"/>
                 <div className="d-grid">
-                    <button onClick={submitQuestion} className="btn btn-primary">Submit</button>
+                    <button disabled={disableSubmit} onClick={submitQuestion} className="btn btn-primary">Submit
+                    </button>
                 </div>
             </div>
         </div>

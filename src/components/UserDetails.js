@@ -1,10 +1,12 @@
 import {connect} from "react-redux";
 import {logoutAction} from "../store/actions/authUser";
+import {successMessage} from "../store/actions/message";
 
 function UserDetails({user, dispatch}) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(logoutAction());
+        dispatch(successMessage("Logged out successfully!"))
     }
     // if there is no logged-in user don't display anything
     if (!user)

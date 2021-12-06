@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NewQuestion from "./components/NewQuestion";
 import Notifier from "./components/Notifier";
 import Leaderboard from "./components/Leaderboard";
+import QuestionDetails from "./components/QuestionDetails";
 
 function App({dispatch}) {
     useEffect(() => {
@@ -25,6 +26,7 @@ function App({dispatch}) {
                 <ProtectedRoute exact={true} path={'/'}><Home/></ProtectedRoute>
                 <ProtectedRoute path={'/add'}><NewQuestion/></ProtectedRoute>
                 <ProtectedRoute path={'/leaderboard'}><Leaderboard/></ProtectedRoute>
+                <ProtectedRoute path={'/questions/:question_id'}><QuestionDetails/></ProtectedRoute>
                 <Route path={'/login'} component={Login}/>
                 <Route component={PageNotFound}/>
             </Switch>

@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import {User} from "./User";
 
 function Leaderboard({users}) {
-    console.log(users);
     return (<div className='d-flex flex-column align-items-center justify-content-center'>
         {users.map(user => <User key={user.id} user={user}/>)}
     </div>)

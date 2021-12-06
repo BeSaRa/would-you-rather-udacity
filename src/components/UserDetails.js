@@ -17,7 +17,7 @@ function UserDetails({user, dispatch}) {
             <ul className='navbar-nav d-flex align-items-center justify-content-end'>
                 <li className="nav-item"><span className="nav-link">Hello, {user.name}</span></li>
                 <li className="nav-item"><img alt="avatar" className={'logged-in-avatar'}
-                                              src={"/assets/avatars/avatar-1.png"}/></li>
+                                              src={user.avatarURL}/></li>
                 <li className="separator"/>
                 <li className="nav-item"><a className='nav-link' onClick={(e) => logout(e)} href="/#">logout</a></li>
             </ul>

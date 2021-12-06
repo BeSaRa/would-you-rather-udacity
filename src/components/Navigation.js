@@ -1,7 +1,7 @@
 import {FaPoll} from "react-icons/all";
 import UserDetails from "./UserDetails";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 function Navigation({authUser}) {
     return (<nav className="navbar shadow navbar-expand navbar-dark bg-dark flex-grow-0">
@@ -12,13 +12,13 @@ function Navigation({authUser}) {
             </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className={'nav-item'}>
-                    <Link to={'/'} className={'active nav-link'}>home</Link>
+                    <NavLink exact={true} activeClassName={'active'} to={'/'} className={'nav-link'}>home</NavLink>
                 </li>
                 <li className={'nav-item'}>
-                    <Link to={'/add'} className={'nav-link'}>New Question</Link>
+                    <NavLink activeClassName={'active'} to={'/add'} className={'nav-link'}>New Question</NavLink>
                 </li>
                 <li className={'nav-item'}>
-                    <Link to={'/leaderboard'} className={'nav-link'}>leaderboard</Link>
+                    <NavLink activeClassName={'active'} to={'/leaderboard'} className={'nav-link'}>leaderboard</NavLink>
                 </li>
             </ul>
             {authUser && <UserDetails/>}

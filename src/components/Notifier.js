@@ -11,7 +11,8 @@ function Notifier({message, dispatch}) {
         dispatch(dismissMessage());
     }
 
-    return message ? (<div className="d-flex align-items-center justify-content-center">
+    return message ? (<div
+        className="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle-x">
         <div className={`alert alert-dismissible ${message.class}`} role="alert">
             <span>{message.text}</span>
             <button onClick={dismiss} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"/>

@@ -12,6 +12,7 @@ import NewQuestion from "./components/NewQuestion";
 import Notifier from "./components/Notifier";
 import Leaderboard from "./components/Leaderboard";
 import QuestionDetails from "./components/QuestionDetails";
+import LoadingBar from "react-redux-loading";
 
 function App({dispatch}) {
     useEffect(() => {
@@ -20,6 +21,7 @@ function App({dispatch}) {
     });
     return (<div id="app" className="d-flex flex-column flex-grow-1">
         <Navigation/>
+        <LoadingBar/>
         <div className="container shadow-sm bg-white flex-grow-1 pt-5">
             <Notifier/>
             <Switch>

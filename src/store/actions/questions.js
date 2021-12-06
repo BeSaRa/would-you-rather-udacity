@@ -1,6 +1,7 @@
 import {_saveQuestion, _saveQuestionAnswer} from "../../API/API";
 import {successMessage} from "./message";
 import {userAnswerQuestion} from "./users";
+import {hideLoading, showLoading} from "react-redux-loading";
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -29,20 +30,24 @@ function answerQuestion({authedUser, qid, answer}) {
 }
 
 export const handleAddQuestion = (question, cb) => (dispatch) => {
+    dispatch(showLoading())
     _saveQuestion(question)
         .then((formattedQuestion) => {
             dispatch(addQuestion(formattedQuestion));
             dispatch(successMessage("Your Question added successfully !"))
             cb && cb();
         })
+        .finally(() => dispatch(hideLoading()))
 }
 
 export const handleAnswerQuestion = ({authedUser, qid, answer}) => (dispatch) => {
+    dispatch(showLoading())
     _saveQuestionAnswer({authedUser, qid, answer})
         .then(() => {
             dispatch(answerQuestion({authedUser, qid, answer}))
             dispatch(userAnswerQuestion({authedUser, qid, answer}))
             dispatch(successMessage(" Your Answer saved successfully !"))
         })
+        .finally(() => dispatch(hideLoading()))
 }
 

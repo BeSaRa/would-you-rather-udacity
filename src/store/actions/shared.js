@@ -1,7 +1,7 @@
 import {_getQuestions, _getUsers} from "../../API/API";
 import {receiveQuestionsAction} from "./questions";
 import {receiveUsersAction} from "./users";
-import {hideLoading, showLoading} from "react-redux-loading";
+import {hideLoading, showLoading} from "react-redux-loading-bar";
 
 
 export function handleLoadInitialData() {

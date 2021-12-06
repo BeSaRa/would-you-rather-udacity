@@ -12,7 +12,7 @@ import NewQuestion from "./components/NewQuestion";
 import Notifier from "./components/Notifier";
 import Leaderboard from "./components/Leaderboard";
 import QuestionDetails from "./components/QuestionDetails";
-import LoadingBar from "react-redux-loading";
+import LoadingBar from "react-redux-loading-bar";
 
 function App({dispatch}) {
     useEffect(() => {

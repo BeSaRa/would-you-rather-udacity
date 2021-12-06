@@ -1,7 +1,7 @@
 import {_saveQuestion, _saveQuestionAnswer} from "../../API/API";
 import {successMessage} from "./message";
 import {userAnswerQuestion} from "./users";
-import {hideLoading, showLoading} from "react-redux-loading";
+import {hideLoading, showLoading} from "react-redux-loading-bar";
 
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';

@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {handleAnswerQuestion} from "../store/actions/questions";
+import PropTypes from "prop-types";
 
 function VoteQuestion({question, authUser, dispatch}) {
     const [answer, setAnswer] = useState('optionOne');
@@ -41,4 +42,17 @@ function VoteQuestion({question, authUser, dispatch}) {
     </div>
 }
 
+VoteQuestion.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    authUser: PropTypes.string.isRequired,
+    question: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        optionOne: PropTypes.shape({
+            text: PropTypes.string.isRequired
+        }).isRequired,
+        optionTwo: PropTypes.shape({
+            text: PropTypes.string.isRequired
+        }).isRequired
+    })
+}
 export default VoteQuestion;

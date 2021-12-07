@@ -1,4 +1,5 @@
 import ProgressBar from "./ProgressBar";
+import PropTypes from "prop-types";
 
 function ResultQuestion({question, authUser}) {
     const options = ['optionOne', 'optionTwo'];
@@ -26,5 +27,17 @@ function ResultQuestion({question, authUser}) {
         </div>
     </div>
 }
-
+ResultQuestion.propTypes = {
+    authUser: PropTypes.string.isRequired,
+    question: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        optionOne: PropTypes.shape({
+            text: PropTypes.string.isRequired
+        }).isRequired,
+        optionTwo: PropTypes.shape({
+            text: PropTypes.string.isRequired
+        }).isRequired,
+        votes: PropTypes.arrayOf(PropTypes.string)
+    })
+}
 export default ResultQuestion;

@@ -7,10 +7,11 @@ import ResultQuestion from "./ResultQuestion";
 function QuestionDetails({question, author, authUser, dispatch, alreadyAnswered}) {
     // redirect to error page if question not exists
     if (!question) {
-        return <Redirect to={'/404'}/>
+        return <Redirect to={{
+            pathname: '/404',
+            state: 'Question Not exists'
+        }}/>
     }
-
-    console.log({alreadyAnswered});
 
     return <div className="row align-items-center justify-content-center">
         <div className="col-md-8 col-sm-12 col-lg-6">

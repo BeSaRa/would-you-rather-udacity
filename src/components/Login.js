@@ -1,12 +1,12 @@
 import {FaPoll} from "react-icons/all";
 import {connect} from "react-redux";
 import {loginAction} from "../store/actions/authUser";
-import {Redirect} from "react-router-dom";
+import {Redirect, useLocation} from "react-router-dom";
 import {successMessage} from "../store/actions/message";
 
 function Login({usersIds, users, authUser, dispatch}) {
     let select = null;
-
+    const {state} = useLocation();
     const doLogin = (userId) => {
         // ignore dispatch login action if there is no users in userIds list
         if (!userId)
@@ -18,7 +18,7 @@ function Login({usersIds, users, authUser, dispatch}) {
     }
 
     if (authUser) {
-        return <Redirect to={'/'}/>
+        return <Redirect to={{pathname: state?.from ? state.from : '/'}}/>
     }
 
     return <div className='d-flex align-items-center justify-content-center'>

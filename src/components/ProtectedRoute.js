@@ -2,8 +2,11 @@ import {Redirect, Route} from "react-router-dom";
 import {connect} from "react-redux";
 
 function ProtectedRoute({children, authUser, ...rest}) {
-    return <Route {...rest} render={() => {
-        return authUser ? (children) : <Redirect to={'/login'}/>
+    return <Route {...rest} render={({location}) => {
+        return authUser ? (children) : <Redirect to={{
+            pathname: '/login',
+            state: {from: location.pathname}
+        }}/>
     }}/>
 }
 
